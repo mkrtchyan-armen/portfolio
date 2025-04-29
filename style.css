@@ -27,7 +27,8 @@ h1 {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
-  gap: 20px;
+  gap: 20px; /* Adds spacing between the tiles */
+  padding: 20px; /* add padding arround all grid-container */
 }
 
 .project-tile {
@@ -35,6 +36,7 @@ h1 {
   width: 100%;
   height: 300px;
   perspective: 1000px; /* For the 3D effect */
+  /* margin: 10px;   REMOVED THIS - space is handled by the grid-container's gap*/
 }
 
 .project-tile-inner {
@@ -60,12 +62,15 @@ h1 {
   align-items: center;
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: opacity 0.8s, visibility 0.8s; /* Add transition for a smoother appearance */
 }
 
 .project-tile-front {
   background-color: #3e4451;
   color: #fff;
   padding: 20px;
+  opacity: 1;
+  visibility: visible;
 }
 
 .project-tile-back {
@@ -73,6 +78,20 @@ h1 {
   color: #fff;
   transform: rotateY(180deg);
   padding: 20px;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute; /* IMPORTANT - Ensures elements stay in place */
+
+}
+
+.project-tile.flipped .project-tile-front {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.project-tile.flipped .project-tile-back {
+    opacity: 1;
+    visibility: visible;
 }
 
 .project-tile img {
