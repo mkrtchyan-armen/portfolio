@@ -1,30 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Armen Mkrtchyan - Game/Software Developer</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Armen Mkrtchyan Portfolio</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      padding: 2rem;
+      text-align: center;
+      background-color: #006d77;
+      color: white;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      padding: 2rem;
+    }
+    .tile {
+      perspective: 1000px;
+      height: 300px;
+    }
+    .inner-tile {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+    .tile:hover .inner-tile {
+      transform: rotateY(180deg);
+    }
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .front {
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .front img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .back {
+      background: #edf6f9;
+      color: #023047;
+      transform: rotateY(180deg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      text-align: center;
+    }
+    .back button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: #006d77;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .back button:hover {
+      background: #005960;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-
   <header>
     <h1>Armen Mkrtchyan</h1>
-    <p>Game/Software Developer</p>
+    <p>Game / Software Developer</p>
   </header>
+  <div class="container" id="projects"></div>
 
-  <main id="portfolio">
-    <div class="grid-container">
-      <!-- Project tiles will be inserted here by JavaScript -->
-    </div>
-  </main>
+  <script>
+    const projects = [
+      { name: "Project 1", image: "https://via.placeholder.com/300", url: "#" },
+      { name: "Project 2", image: "https://via.placeholder.com/300", url: "#" },
+      { name: "Project 3", image: "https://via.placeholder.com/300", url: "#" },
+      { name: "Project 4", image: "https://via.placeholder.com/300", url: "#" },
+      { name: "Project 5", image: "https://via.placeholder.com/300", url: "#" },
+      { name: "Project 6", image: "https://via.placeholder.com/300", url: "#" },
+      { name: "Project 7", image: "https://via.placeholder.com/300", url: "#" },
+      { name: "Project 8", image: "https://via.placeholder.com/300", url: "#" },
+      { name: "Project 9", image: "https://via.placeholder.com/300", url: "#" },
+      { name: "Project 10", image: "https://via.placeholder.com/300", url: "#" },
+      { name: "Project 11", image: "https://via.placeholder.com/300", url: "#" },
+      { name: "Project 12", image: "https://via.placeholder.com/300", url: "#" },
+      { name: "Project 13", image: "https://via.placeholder.com/300", url: "#" },
+      { name: "Project 14", image: "https://via.placeholder.com/300", url: "#" },
+      { name: "Project 15", image: "https://via.placeholder.com/300", url: "#" },
+      { name: "Project 16", image: "https://via.placeholder.com/300", url: "#" },
+      { name: "Project 17", image: "https://via.placeholder.com/300", url: "#" },
+      { name: "Project 18", image: "https://via.placeholder.com/300", url: "#" },
+      { name: "Project 19", image: "https://via.placeholder.com/300", url: "#" },
+      { name: "Project 20", image: "https://via.placeholder.com/300", url: "#" }
+    ];
 
-  <footer>
-    <p>© 2024 Armen Mkrtchyan</p>
-  </footer>
+    const container = document.getElementById('projects');
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="script.js"></script>
+    projects.forEach(project => {
+      const tile = document.createElement('div');
+      tile.className = 'tile';
+
+      tile.innerHTML = `
+        <div class="inner-tile">
+          <div class="front">
+            <img src="${project.image}" alt="${project.name}" />
+          </div>
+          <div class="back">
+            <h3>${project.name}</h3>
+            <button onclick="window.open('${project.url}', '_blank')">View Project</button>
+          </div>
+        </div>
+      `;
+
+      container.appendChild(tile);
+    });
+  </script>
 </body>
 </html>
