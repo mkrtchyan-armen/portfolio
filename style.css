@@ -1,87 +1,84 @@
 /* General Styles */
 body {
-  font-family: sans-serif;
-  background-color: #282c34;
-  color: #abb2bf;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
+    font-family: sans-serif;
+    background-color: #282c34; /* Dark Grey */
+    color: #abb2bf; /* Light Grey */
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
 }
 
 header, footer {
-  background-color: #21252b;
-  padding: 20px;
-  text-align: center;
+    background-color: #21252b;
+    padding: 20px;
+    text-align: center;
 }
 
 h1 {
-  margin-bottom: 0.5em;
-  color: #61dafb; /* Accent color for name */
+    margin-bottom: 0.5em;
+    color: #61dafb; /* Light Blue - Accent */
 }
 
 /* Portfolio Grid */
 #portfolio {
-  padding: 20px;
+    padding: 20px;
 }
 
 .grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
-  gap: 20px; /* Adds spacing between the tiles */
-  padding: 20px; /* add padding arround all grid-container */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+    gap: 20px;
+    padding: 20px;
+    background-color: #2f333d; /* Slightly lighter than body for contrast */
 }
 
 .project-tile {
-  position: relative;
-  width: 100%;
-  height: 300px;
-  perspective: 1000px; /* For the 3D effect */
-  /* margin: 10px;   REMOVED THIS - space is handled by the grid-container's gap*/
+    position: relative;
+    width: 100%;
+    height: 300px;
+    perspective: 1000px; /* For the 3D effect */
 }
 
 .project-tile-inner {
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-  cursor: pointer;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    cursor: pointer;
 }
 
 .project-tile.flipped .project-tile-inner {
-  transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
 .project-tile-front, .project-tile-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: opacity 0.8s, visibility 0.8s; /* Add transition for a smoother appearance */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.8s, visibility 0.8s; /* Smooth transition */
+    background-color: #3e4451;/*Lighter than container*/
 }
 
 .project-tile-front {
-  background-color: #3e4451;
-  color: #fff;
-  padding: 20px;
-  opacity: 1;
-  visibility: visible;
+    color: #fff;
+    padding: 20px;
+    opacity: 1;
+    visibility: visible;
 }
 
 .project-tile-back {
-  background-color: #3e4451;
-  color: #fff;
-  transform: rotateY(180deg);
-  padding: 20px;
-  opacity: 0;
-  visibility: hidden;
-  position: absolute; /* IMPORTANT - Ensures elements stay in place */
-
+    color: #fff;
+    transform: rotateY(180deg);
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .project-tile.flipped .project-tile-front {
@@ -95,43 +92,43 @@ h1 {
 }
 
 .project-tile img {
-  max-width: 80%;
-  max-height: 60%;
-  object-fit: cover;
-  border-radius: 5px;
-  margin-bottom: 10px;
+    max-width: 80%;
+    max-height: 60%;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
 .project-tile h3 {
-  margin: 0;
-  font-size: 1.2em;
+    margin: 0;
+    font-size: 1.2em;
 }
 
 /* Button */
 .project-button {
-  background-color: #61dafb;
-  color: #282c34;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  text-decoration: none; /* Remove underline from link */
-  display: inline-block;
-  margin-top: 15px;
+    background-color: #61dafb; /* Light Blue - Accent */
+    color: #282c34; /* Dark Grey */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 15px;
 }
 
 .project-button:hover {
-  background-color: #94f0ff; /* Slightly brighter on hover */
+    background-color: #94f0ff; /* Lighter Blue on hover */
 }
 
 /* Responsive adjustments */
 @media (max-width: 600px) {
-  header h1 {
-    font-size: 2em;
-  }
+    header h1 {
+        font-size: 2em;
+    }
 
-  .grid-container {
-    grid-template-columns: 1fr; /* Stack tiles on smaller screens */
-  }
+    .grid-container {
+        grid-template-columns: 1fr; /* Stack tiles on smaller screens */
+    }
 }
